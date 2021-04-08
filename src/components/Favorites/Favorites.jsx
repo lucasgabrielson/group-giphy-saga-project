@@ -20,6 +20,9 @@ function Favorites() {
             <option value="meme">Meme</option>
         </select>
         </div>
+        <div>
+            
+        </div>
         </>
     )
 }

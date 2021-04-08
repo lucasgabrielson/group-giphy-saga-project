@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const Search = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [ query, setQuery ] = useState('');
 
@@ -12,7 +12,7 @@ const Search = () => {
     }
 
     const getGifs = () => {
-        dispatch( { type: 'SET_ELEMENTS', payload: [] } );
+        //dispatch( { type: 'SET_ELEMENTS', payload: [] } );
     }
 
     return (
