@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     queryText = `SELECT favorites.url
     FROM favorites
     JOIN category ON favorites.category_id = category.id
-    WHERE category.name ='` +category + `'`
+    WHERE category.name ='` + category + `'`
   }
   console.log(queryText)
   pool.query(queryText).then((response) =>{
