@@ -1,9 +1,10 @@
 import React from 'react'
+import ImageItem from '../ImageItem/ImageItem'
 
-const ImageList = () => {
+function ImageList (props){
     return (
         <div>
-            
+            {props.url.map((gallery) => <ImageItem url={gallery.url}/>)}
         </div>
     )
 }

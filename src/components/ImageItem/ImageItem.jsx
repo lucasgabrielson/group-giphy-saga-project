@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ImageItem = () => {
+function ImageItem (props) {
     return (
         <div>
-            
+            <img src={props.url}/>
         </div>
     )
 }

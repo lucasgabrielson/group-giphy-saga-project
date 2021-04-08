@@ -1,8 +1,10 @@
 import axios from "axios"
 import { useState } from "react"
+import ImageList from '../ImageList/ImageList'
 
 function Favorites() {
     let [category, setCategory] = useState('all')
+    let [url,setUrl] = useState([])
 
     const getFavorites = (cat) =>{
         console.log(cat)
@@ -10,7 +12,7 @@ function Favorites() {
             type: 'GET',
             url: `/api/favorite/?category=` + category
         }).then((response) =>{
-            console.log(response.data.rows)
+            setUrl(response.data.rows)
         }).catch((err)=>{
             console.log(err)
         })
@@ -33,7 +35,7 @@ function Favorites() {
         <button onClick={() => getFavorites(category)}>Click</button>
         </div>
         <div>
-            
+            <ImageList url={url}/>
         </div>
         </>
     )
