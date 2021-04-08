@@ -1,6 +1,8 @@
 import React from 'react';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
+import Favorites from '../Favorites/Favorites'
+import Search from '../Search/Search'
 
 function App(props) {
 
@@ -13,10 +15,11 @@ function App(props) {
 
     <Router>
       <Route path='/' exact>
-        <h1>SEARCH</h1>
+        <Search/>
       </Route> 
       <Route path='/favorites' exact>
         <h1>FAVORITES</h1>
+        <Favorites />
       </Route>
     </Router>
 
