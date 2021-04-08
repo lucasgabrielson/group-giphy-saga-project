@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const Search = () => {
-
+    // const dispatch = useDispatch();
 
     const [ query, setQuery ] = useState('');
 
@@ -14,8 +14,8 @@ const Search = () => {
 
     const getGifs = () => {
         // dispatch( { type: 'SET_ELEMENTS', payload: [] } );
-        console.log( 'in getGifs' );
-        axios.get( `/api/giphy?searchQuery=${query}`)
+        console.log( 'in getGifs', query );
+        axios.get( '/api/giphy/' + query )
             .then( response => {
                 console.log( 'back from GET giphy', response );
             }).catch( err => {

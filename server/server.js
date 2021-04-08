@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 // App PORT set with production check
@@ -19,7 +20,7 @@ app.use(express.static('build'));
 // Routes
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/category', categoryRouter);
-app.use('api/giphy', searchRouter);
+app.use('/api/giphy', searchRouter);
 
 // Listen
 app.listen(PORT, () => {
