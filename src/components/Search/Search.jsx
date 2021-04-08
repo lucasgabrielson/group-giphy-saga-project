@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const Search = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [ query, setQuery ] = useState('');
 
