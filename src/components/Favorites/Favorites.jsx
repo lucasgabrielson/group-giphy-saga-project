@@ -1,5 +1,10 @@
+import axios from "axios"
 
 function Favorites() {
+
+    const getFavorites = () =>{
+    
+    }
 
     return(
         <>
@@ -7,7 +12,7 @@ function Favorites() {
             <h2>Favorited Images</h2>
         </div>
         <div>
-        <select name="example">
+        <select className="categories">
             <option value="funny">Funny</option>
             <option value="cohort">Cohort</option>
             <option value="cartoon">Cartoon</option>
