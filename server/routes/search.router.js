@@ -4,7 +4,6 @@ const pool = require('../modules/pool');
 const axios = require( 'axios' );
 require('dotenv').config();
 
-const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log( 'in /api/giphy GET', req.query)
