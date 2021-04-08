@@ -32,6 +32,9 @@ function Favorites() {
         </select>
         <button onClick={() => getFavorites(category)}>Click</button>
         </div>
+        <div>
+            
+        </div>
         </>
     )
 }
