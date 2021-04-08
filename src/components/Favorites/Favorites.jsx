@@ -4,8 +4,16 @@ import { useState } from "react"
 function Favorites() {
     let [category, setCategory] = useState('all')
 
-    const getFavorites = (category) =>{
-        
+    const getFavorites = (cat) =>{
+        console.log(cat)
+        axios({
+            type: 'GET',
+            url: `/api/favorite/?category=` + category
+        }).then((response) =>{
+            console.log(response.data.rows)
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
     return(
         <>
@@ -13,14 +21,16 @@ function Favorites() {
             <h2>Favorited Images</h2>
         </div>
         <div>
-        <select className="categories">
-            <option value="all" onChange={(event) => setSupport(event.target.value)} selected>all</option>
-            <option value="funny" onChange={(event) => setSupport(event.target.value)}>Funny</option>
-            <option value="cohort" onChange={(event) => setSupport(event.target.value)}>Cohort</option>
-            <option value="cartoon" onChange={(event) => setSupport(event.target.value)}>Cartoon</option>
-            <option value="nfsw" onChange={(event) => setSupport(event.target.value)}>NSFW</option>
-            <option value="meme" onChange={(event) => setSupport(event.target.value)}>Meme</option>
+        <select onChange={(event) => setCategory(event.target.value)} className="categories">
+            <option value="all">all</option>
+            <option value="funny">Funny</option>
+            <option value="cohort">Cohort</option>
+            <option value="cartoon">Cartoon</option>
+            <option value="nfsw">NSFW</option>
+            <option value="meme">Meme</option>
+
         </select>
+        <button onClick={() => getFavorites(category)}>Click</button>
         </div>
         </>
     )
