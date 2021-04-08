@@ -4,14 +4,20 @@ const pool = require('../modules/pool');
 const axios = require( 'axios' );
 require('dotenv').config();
 
-router.get('/', (req, res) => {
-    console.log( 'in /api/giphy GET', req.query)
-    axios.get(`http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.query.searchQuery}`)
+router.get('/:search', (req, res) => {
+    console.log( 'in /api/giphy GET', req.params.search )
+    axios.get(`http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${req.params.search}`)
     .then( response => {
             res.send(response.data)
         }).catch( err => { 
             res.sendStatus(500)
-        })    
+        })     
 });
 
 module.exports = router;
+
+
+
+// process.env.GIPHY_API_KEY
+//'ybRIrzuMoGES7Y9ykI8fant9SohCV2LZ'
+
