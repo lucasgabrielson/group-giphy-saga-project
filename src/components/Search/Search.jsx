@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const Search = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,15 @@ const Search = () => {
     }
 
     const getGifs = () => {
-        dispatch( { type: 'SET_ELEMENTS', payload: [] } );
+        // dispatch( { type: 'SET_ELEMENTS', payload: [] } );
+        console.log( 'in getGifs' );
+        axios.get( `/api/giphy?searchQuery=${query}`)
+            .then( response => {
+                console.log( 'back from GET giphy', response );
+            }).catch( err => {
+                alert( 'erroring fetching gifs' );
+                console.log( err );
+            })
     }
 
     return (
