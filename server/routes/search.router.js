@@ -17,7 +17,3 @@ router.get('/:search', (req, res) => {
 module.exports = router;
 
 
-
-// process.env.GIPHY_API_KEY
-//'ybRIrzuMoGES7Y9ykI8fant9SohCV2LZ'
-
