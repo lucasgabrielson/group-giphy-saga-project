@@ -34,7 +34,9 @@ const Search = () => {
     }
 
     return (
+
         <div className = 'form-content'>
+            <button onClick={useDispatch({type: 'SEARCH_GIPHY'})}>Click Me</button>
             <input onChange = {handleChange} value = {query} type = 'text' placeholder = 'Type of Gif You Haz To Find'></input>
             <button onClick = {() => getGifs()}>Search 4 Ya Gif</button>
             <section>
