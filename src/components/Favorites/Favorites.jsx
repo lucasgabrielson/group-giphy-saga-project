@@ -1,10 +1,12 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ImageList from '../ImageList/ImageList'
+import CategoriesList from '../CategoriesList/CategoriesList'
 
 function Favorites() {
     let [category, setCategory] = useState('all')
     let [url,setUrl] = useState([])
+    let [cats, setCats] = useState({name: 'all'})
 
     const getFavorites = (cat) =>{
         console.log(cat)
@@ -17,21 +19,35 @@ function Favorites() {
             console.log(err)
         })
     }
+
+    const getCategories = () => {
+        ///api/category
+        axios({
+            type: 'GET',
+            url: `/api/category`
+        }).then((response) =>{
+            // for(let i=0; i < response.data.length; i++){
+            //     cats = [...cats, response.data[i].name]
+            // }
+
+        setCats(response.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+    }
+    
+    useEffect(() => {getCategories() }, [])
+
     return(
         <>
         <div>
             <h2>Favorited Images</h2>
         </div>
         <div>
-        <select onChange={(event) => setCategory(event.target.value)} className="categories">
-            <option value="all">all</option>
-            <option value="funny">Funny</option>
-            <option value="cohort">Cohort</option>
-            <option value="cartoon">Cartoon</option>
-            <option value="nfsw">NSFW</option>
-            <option value="meme">Meme</option>
 
-        </select>
+            {/* <option value="all">all</option> */}
+            <CategoriesList category={cats} setCategory={setCategory} />
         <button onClick={() => getFavorites(category)}>Click</button>
         </div>
         <div>
