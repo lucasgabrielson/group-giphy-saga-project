@@ -2,15 +2,14 @@
     border: solid 3px #088190;
     height: 200px;
     width: 200px;
-    margin-left: 1.5rem;
 }
 
 .reaction {
     display: grid;
     grid-template-columns: repeat( 12, 1fr );
     grid-template-areas:
-        "l l l l l l d d d d d d d"
-        "l l l l l l d d d d d d d";
+        "a l l f d d d d d q q q q"
+        "a l l f d d d d d q q q q";
     justify-content: space-evenly;
 }
 

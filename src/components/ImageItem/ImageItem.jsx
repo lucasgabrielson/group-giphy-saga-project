@@ -1,12 +1,47 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './ImageItem.css'
+import axios from 'axios';
 
 const ImageItem = (props) => {
-    const [ category, setCategory ] = useState( '' );
+    // local state that holds the category chosen
+    const [ category, setCategory ] = useState( 0 );
 
-    const addToFavs = () => {
-        console.log( 'in addToFavs' );
+    const updateCategory = event => {
+        switch( event.target.value ) {
+            case 'funny':
+                setCategory( 1 );
+                break;
+            case 'cohort':
+                setCategory( 2 );
+                break;
+            case 'cartoon':
+                setCategory( 3 );
+                break;
+            case 'nsfw':
+                setCategory( 4 );
+                break;
+            case 'meme':
+                setCategory( 5 );
+                break;
+            default:
+                console.log( 'you done goofed' );
+        }
+    }
+
+    const addToFavs = (url) => {
+        const objectToSend = {
+            url: url,
+            category: category
+        }
+        console.log( 'in addToFavs', objectToSend );
+        axios.post( '/api/favorite', objectToSend )
+            .then( response => {
+                console.log( 'back from POST /api/favorite' );
+            }).catch( err => {
+                console.log( err );
+                alert( 'error adding favorite to database' )
+            })
     }
     return (
         <div>
@@ -15,7 +50,7 @@ const ImageItem = (props) => {
             <>
             <img className = "wrapper" src ={props.url.images.original.url} />
             <div className = "reaction"> 
-                <select className = "likes" onChange={event => setCategory(event.target.value)}>
+                <select className = "likes" onChange={updateCategory}>
                     <option value="funny">Funny</option>
                     <option value="cohort">Cohort</option>
                     <option value="cartoon">Cartoon</option>
@@ -23,7 +58,7 @@ const ImageItem = (props) => {
                     <option value="meme">Meme</option>
                 </select>
                 {/* if a category has been selected allow image to be added to favorites */}
-                { category ? <button className = "delete" onClick = {() => addToFavs()} >Add To Favs</button> : '' }
+                { category ? <button className = "delete" onClick = {() => addToFavs(props.url.images.original.url)} >Add To Favs</button> : '' }
             </div>    
             </>
             : 
