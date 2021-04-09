@@ -6,10 +6,9 @@ import CategoriesList from '../CategoriesList/CategoriesList'
 function Favorites() {
     let [category, setCategory] = useState('all')
     let [url,setUrl] = useState([])
-    let [cats, setCats] = useState({name: 'all'})
+    let [cats, setCats] = useState([{name: 'all'}])
 
     const getFavorites = (cat) =>{
-        console.log(cat)
         axios({
             type: 'GET',
             url: `/api/favorite/?category=` + category
@@ -27,7 +26,7 @@ function Favorites() {
             url: `/api/category`
         }).then((response) =>{
             console.log( response.data );
-        setCats(response.data)
+            setCats(response.data)
         }).catch((err)=>{
             console.log(err)
         })

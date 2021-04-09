@@ -1,7 +1,7 @@
 
-function CategoriesItem (props) {
+function CategoriesItem ({ cat }) {
     return(
-    <option value={props.cat.name}>{props.cat.name}</option>
+    <option value={cat}>{cat}</option>
     )
 }
 
