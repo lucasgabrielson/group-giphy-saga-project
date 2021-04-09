@@ -2,13 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import ImageList from '../ImageList/ImageList';
+// import './Search.css'
 
 const Search = () => {
     // const dispatch = useDispatch();
 
     const [ query, setQuery ] = useState( '' );
-
-    const [ category, setCategory ] = useState( '' );
 
     const [ urls, setUrls ] = useState( [] );
     const handleChange = event => {
@@ -28,30 +28,17 @@ const Search = () => {
             })
     }
 
-    // const addToFavs = () => {
-    //     console.log( 'in addToFavs' );
-    //     axios.post( '/api/favorite' )
-    // }
+    const addToFavs = () => {
+        console.log( 'in addToFavs' );
+        axios.post( '/api/favorite' )
+    }
 
     return (
-        <div>
+        <div className = 'form-content'>
             <input onChange = {handleChange} value = {query} type = 'text' placeholder = 'Type of Gif You Haz To Find'></input>
             <button onClick = {() => getGifs()}>Search 4 Ya Gif</button>
             <section>
-                { urls.map( ( image, index ) => 
-                { return 
-                    <div key = { index } >
-                        <img src = {image.images.original.url} />
-                        <select onChange={(event) => setCategory(event.target.value)} className="categories">
-                            <option value="funny">Funny</option>
-                            <option value="cohort">Cohort</option>
-                            <option value="cartoon">Cartoon</option>
-                            <option value="nfsw">NSFW</option>
-                            <option value="meme">Meme</option>
-                        </select>
-                        { category ? <button onClick = {() => addToFavs()}>Fav Me Plz</button> : '' }
-                    </div> 
-                })}
+                <ImageList url = {urls} search = {true} />
             </section>
         </div>
     )
@@ -60,3 +47,4 @@ const Search = () => {
 export default Search
 
 //<div key = { index }><img src = {url.url} /></div>
+
