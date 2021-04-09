@@ -26,10 +26,7 @@ function Favorites() {
             type: 'GET',
             url: `/api/category`
         }).then((response) =>{
-            // for(let i=0; i < response.data.length; i++){
-            //     cats = [...cats, response.data[i].name]
-            // }
-
+            console.log( response.data );
         setCats(response.data)
         }).catch((err)=>{
             console.log(err)
