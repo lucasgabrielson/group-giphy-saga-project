@@ -35,7 +35,7 @@ function Favorites() {
         <button onClick={() => getFavorites(category)}>Click</button>
         </div>
         <div>
-            <ImageList url={url}/>
+            <ImageList url={url} search={false}/>
         </div>
         </>
     )
