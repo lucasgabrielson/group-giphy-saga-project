@@ -47,7 +47,7 @@ function Favorites() {
             <CategoriesList category={cats} setCategory={setCategory} />
         <button onClick={() => getFavorites(category)}>Click</button>
         </div>
-        <div>
+        <div className = 'form-content'>
             <ImageList url={url} search={false}/>
         </div>
         </>
