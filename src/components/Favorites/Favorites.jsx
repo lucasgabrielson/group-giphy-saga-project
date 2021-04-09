@@ -6,7 +6,7 @@ import CategoriesList from '../CategoriesList/CategoriesList'
 function Favorites() {
     let [category, setCategory] = useState('all')
     let [url,setUrl] = useState([])
-    let [cats, setCats] = useState({name: 'all'})
+    let [cats, setCats] = useState([{name: 'all'}])
 
     const getFavorites = (cat) =>{
         console.log(cat)
