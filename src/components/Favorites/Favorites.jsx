@@ -27,7 +27,7 @@ function Favorites() {
             url: `/api/category`
         }).then((response) =>{
             console.log( response.data );
-        setCats(response.data)
+        setCats([...cats, ...response.data]);
         }).catch((err)=>{
             console.log(err)
         })
